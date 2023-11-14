@@ -29,6 +29,8 @@ public class InputView {
 
     public List<Map<String, Integer>> inputMenu() {
 
+        System.out.println(ConsoleMessage.MENU_NAME_QUANTITY.getMessage());
+
         String menu = Console.readLine();
         String[] menus = menu.split(",");
         List<Map<String, Integer>> menuList = new ArrayList<>();
@@ -40,6 +42,8 @@ public class InputView {
             try {
                 menuMap.put(menuPairSplit[0], Integer.parseInt(menuPairSplit[1]));
             } catch (NumberFormatException e) {
+                throw new IllegalArgumentException(ErrorMessage.INVALID_ORDER.getMessage());
+            }catch (ArrayIndexOutOfBoundsException e){
                 throw new IllegalArgumentException(ErrorMessage.INVALID_ORDER.getMessage());
             }
 
