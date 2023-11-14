@@ -12,16 +12,19 @@ public class Giveaway {
     }
 
     private void calculateBenefitMoney(){
+
         if(checkGiveaway()){
             benefitMoney += 25000;
         }
     }
 
     public boolean checkGiveaway(){
+
         return totalMoney >= LOWER_LIMIT_PRICE;
     }
 
     public int getBenefitMoney(){
+
         return benefitMoney;
     }
 }

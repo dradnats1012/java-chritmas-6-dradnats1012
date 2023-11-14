@@ -11,7 +11,6 @@ import christmas.view.InputView;
 import christmas.view.OutputView;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 
@@ -19,14 +18,16 @@ public class Controller {
     private final InputView inputView;
     private final OutputView outputView;
 
-    public Controller(){
+    public Controller() {
         inputView = new InputView();
         outputView = new OutputView();
     }
 
-    public void run(){
+    public void run() {
+
         int date = getDate();
-        List<Map<String,Integer>> menuList = getMenu();
+
+        List<Map<String, Integer>> menuList = getMenu();
 
         TakeOrder takeOrder = new TakeOrder(menuList);
         List<Integer> menuTypeList = takeOrder.getMenuTypeList();
@@ -52,13 +53,14 @@ public class Controller {
         outputView.printBadge(badge.selectEventBadge());
     }
 
-    private int getDate(){
+    private int getDate() {
+
         int date = 0;
 
-        try{
+        try {
             date = inputView.inputDate();
             DateManager dateManager = new DateManager(date);
-        }catch (IllegalArgumentException e){
+        } catch (IllegalArgumentException e) {
             System.out.println(ErrorMessage.OUT_OF_RANGE_DATE.getMessage());
             getDate();
         }
@@ -66,12 +68,13 @@ public class Controller {
         return date;
     }
 
-    private List<Map<String, Integer>> getMenu(){
+    private List<Map<String, Integer>> getMenu() {
+
         List<Map<String, Integer>> menu = new ArrayList<>();
 
-        try{
+        try {
             menu = inputView.inputMenu();
-        }catch (IllegalArgumentException e){
+        } catch (IllegalArgumentException e) {
             System.out.println(ErrorMessage.INVALID_ORDER.getMessage());
             getMenu();
         }

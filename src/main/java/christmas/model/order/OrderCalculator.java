@@ -9,15 +9,15 @@ public class OrderCalculator {
     private final int length;
     private int total = 0;
 
-    public OrderCalculator(TakeOrder takeOrder){
+    public OrderCalculator(TakeOrder takeOrder) {
         this.menuPriceList = takeOrder.getMenuPriceList();
         this.menuCountList = takeOrder.getMenuCountList();
         this.length = menuCountList.size();
     }
 
-    public int calculateTotalMoney(){
+    public int calculateTotalMoney() {
 
-        for(int i = 0; i < length; i++){
+        for (int i = 0; i < length; i++) {
             total += menuPriceList.get(i) * menuCountList.get(i);
         }
 

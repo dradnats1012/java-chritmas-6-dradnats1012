@@ -1,24 +1,25 @@
 package christmas.model.event;
 
 import christmas.enums.Badges;
-import christmas.message.ConsoleMessage;
 
 public class Badge {
 
     private final int totalBenefitPrice;
 
-    public Badge(int totalBenefitPrice){
+    public Badge(int totalBenefitPrice) {
+
         this.totalBenefitPrice = totalBenefitPrice;
     }
 
-    public String selectEventBadge(){
-        if(totalBenefitPrice >= Badges.SANTA.getPrice()){
+    public String selectEventBadge() {
+
+        if (totalBenefitPrice >= Badges.SANTA.getPrice()) {
             return Badges.SANTA.getName();
         }
-        if(totalBenefitPrice >= Badges.TREE.getPrice()){
+        if (totalBenefitPrice >= Badges.TREE.getPrice()) {
             return Badges.TREE.getName();
         }
-        if(totalBenefitPrice >= Badges.STAR.getPrice()){
+        if (totalBenefitPrice >= Badges.STAR.getPrice()) {
             return Badges.STAR.getName();
         }
 

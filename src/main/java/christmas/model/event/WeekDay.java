@@ -7,15 +7,18 @@ public class WeekDay {
     private int saleMoney = 0;
 
     public WeekDay(List<Integer> menuTypeList) {
+
         this.menuTypeList = menuTypeList;
         calculateSaleMoney(countDessert());
     }
 
     private void calculateSaleMoney(int count) {
+
         saleMoney += count * 2023;
     }
 
     private int countDessert() {
+
         int count = 0;
         for (Integer identifier : menuTypeList) {
             if (identifier == 3) {
@@ -27,6 +30,7 @@ public class WeekDay {
     }
 
     public int getSaleMoney() {
+
         return saleMoney;
     }
 }

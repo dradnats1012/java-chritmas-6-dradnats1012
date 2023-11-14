@@ -7,23 +7,26 @@ public enum Dessert {
     private final String name;
     private final int price;
     private final int identifier;
-    private static final int DESSERT_MENU = 3;
 
     Dessert(String name, int price, int identifier) {
+
         this.name = name;
         this.price = price;
         this.identifier = identifier;
     }
 
     public String getName() {
+
         return name;
     }
 
     public int getPrice() {
+
         return price;
     }
 
-    public int getIdentifier(){
+    public int getIdentifier() {
+
         return identifier;
     }
 }

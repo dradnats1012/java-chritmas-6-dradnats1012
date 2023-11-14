@@ -12,10 +12,12 @@ public class Weekend {
     }
 
     private void calculateSaleMoney(int count) {
+
         saleMoney += count * 2023;
     }
 
     private int countMain() {
+
         int count = 0;
 
         for (Integer identifier : menuTypeList) {
@@ -28,6 +30,7 @@ public class Weekend {
     }
 
     public int getSaleMoney() {
+
         return saleMoney;
     }
 }

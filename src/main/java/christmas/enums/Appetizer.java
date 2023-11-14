@@ -8,7 +8,6 @@ public enum Appetizer {
     private final String name;
     private final int price;
     private final int identifier;
-    private static final int APPETIZER_MENU = 1;
 
     Appetizer(String name, int price, int identifier) {
         this.name = name;
@@ -17,14 +16,17 @@ public enum Appetizer {
     }
 
     public String getName() {
+
         return name;
     }
 
     public int getPrice() {
+
         return price;
     }
 
     public int getIdentifier() {
+
         return identifier;
     }
 }

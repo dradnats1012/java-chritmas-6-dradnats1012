@@ -10,15 +10,18 @@ public enum Badges {
     private final int lowerLimitPrice;
 
     Badges(String name, int lowerLimitPrice) {
+
         this.name = name;
         this.lowerLimitPrice = lowerLimitPrice;
     }
 
     public String getName() {
+
         return name;
     }
 
     public int getPrice() {
+
         return lowerLimitPrice;
     }
 }

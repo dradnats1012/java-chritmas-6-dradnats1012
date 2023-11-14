@@ -1,14 +1,11 @@
 package christmas.model.order;
 
-import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
-import org.mockito.internal.matchers.Or;
 
 import java.util.List;
 import java.util.Map;
 
-import static org.assertj.core.api.Assertions.assertThatThrownBy;
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class OrderCalculatorTest {
     @Test

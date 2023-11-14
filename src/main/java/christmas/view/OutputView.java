@@ -8,13 +8,17 @@ import java.util.Map.Entry;
 
 public class OutputView {
 
-    public void printOrderMenu(List<Map<String, Integer>> menuList) {
+    public void printOrderMenu(List<Map<String, Integer>> menuList, int date) {
 
-        System.out.println(ConsoleMessage.ORDER_MENU);
+        System.out.printf(ConsoleMessage.EVENT_BENEFITS_PREVIEW.getMessage(), date);
+        System.out.println();
+        System.out.println();
+        System.out.println(ConsoleMessage.ORDER_MENU.getMessage());
 
         for (Map<String, Integer> menuPair : menuList) {
             printMenuPair(menuPair);
         }
+        System.out.println();
     }
 
     private void printMenuPair(Map<String, Integer> menuPair) {
@@ -30,6 +34,7 @@ public class OutputView {
 
         System.out.println(ConsoleMessage.TOTAL_PRICE.getMessage());
         System.out.println(formatPrice(totalPrice));
+        System.out.println();
     }
 
     private String formatPrice(int price) {
@@ -47,6 +52,7 @@ public class OutputView {
         }
 
         System.out.println(ConsoleMessage.NOTHING.getMessage());
+        System.out.println();
     }
 
     public void printTotalBenefitsMoney(int totalBenefitsMoney) {
@@ -59,15 +65,22 @@ public class OutputView {
         }
 
         System.out.printf(ConsoleMessage.BENEFITS_MONEY.getMessage(), formatPrice(totalBenefitsMoney));
+        System.out.println();
+        System.out.println();
     }
 
     public void printTotalBenefits(List<Map<String, Integer>> benefitList) {
 
         System.out.println(ConsoleMessage.BENEFIT_DETAILS.getMessage());
 
+        if (benefitList.isEmpty()) {
+            System.out.println("없음");
+        }
         for (Map<String, Integer> benefitPair : benefitList) {
             printBenefitPair(benefitPair);
         }
+
+        System.out.println();
     }
 
     private void printBenefitPair(Map<String, Integer> benefitPair) {
@@ -75,7 +88,7 @@ public class OutputView {
         for (Entry<String, Integer> entry : benefitPair.entrySet()) {
             String menuName = entry.getKey();
             int quantity = entry.getValue();
-            System.out.printf(menuName, formatPrice(quantity));
+            System.out.println(menuName + ": -" + formatPrice(quantity));
         }
     }
 
@@ -83,6 +96,7 @@ public class OutputView {
 
         System.out.println(ConsoleMessage.PRICE_AFTER_SALE.getMessage());
         System.out.println(formatPrice(totalAfterBenefit));
+        System.out.println();
     }
 
     public void printBadge(String badge) {

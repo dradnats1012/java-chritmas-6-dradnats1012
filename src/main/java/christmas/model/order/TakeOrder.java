@@ -13,6 +13,7 @@ public class TakeOrder {
     private final List<String> menuNameList = new ArrayList<>();
     private final List<Integer> menuCountList = new ArrayList<>();
     private final List<Integer> menuTypeList = new ArrayList<>();
+    private final List<Integer> menuPriceList = new ArrayList<>();
 
     public TakeOrder(List<Map<String, Integer>> menuList) {
         this.menuList = menuList;
@@ -57,25 +58,35 @@ public class TakeOrder {
 
     private void isValidMenu() {
 
-        for (String menuName : menuNameList) {
+        for (Map<String, Integer> menu : menuList) {
             boolean isValid = false;
 
-            isValid = checkAppetizerMenu(menuName, isValid);
-            isValid = checkMainMenu(menuName, isValid);
-            isValid = checkDessertMenu(menuName, isValid);
-            isValid = checkBeverageMenu(menuName, isValid);
+            for (Map.Entry<String, Integer> entry : menu.entrySet()) {
+                String name = entry.getKey();
+                int count = entry.getValue();
 
-            if (!isValid) {
-                throw new IllegalArgumentException(ErrorMessage.INVALID_ORDER.getMessage());
+                isValid = checkAppetizerMenu(name, count, isValid);
+                isValid = checkMainMenu(name, count, isValid);
+                isValid = checkDessertMenu(name, count, isValid);
+                isValid = checkBeverageMenu(name, count, isValid);
+
+                if (!isValid) {
+                    throw new IllegalArgumentException(ErrorMessage.INVALID_ORDER.getMessage());
+                }
             }
+
+
         }
     }
 
-    private boolean checkAppetizerMenu(String menuName, boolean isValid) {
+    private boolean checkAppetizerMenu(String menuName, int count, boolean isValid) {
 
         for (Appetizer appetizer : Appetizer.values()) {
             if (menuName.equals(appetizer.getName())) {
-                menuTypeList.add(appetizer.getIdentifier());
+                for (int i = 0; i < count; i++) {
+                    menuTypeList.add(appetizer.getIdentifier());
+                }
+                menuPriceList.add(appetizer.getPrice());
                 isValid = true;
                 break;
             }
@@ -84,11 +95,14 @@ public class TakeOrder {
         return isValid;
     }
 
-    private boolean checkMainMenu(String menuName, boolean isValid) {
+    private boolean checkMainMenu(String menuName, int count, boolean isValid) {
 
         for (MainMenu mainMenu : MainMenu.values()) {
             if (menuName.equals(mainMenu.getName())) {
-                menuTypeList.add(mainMenu.getIdentifier());
+                for (int i = 0; i < count; i++) {
+                    menuTypeList.add(mainMenu.getIdentifier());
+                }
+                menuPriceList.add(mainMenu.getPrice());
                 isValid = true;
                 break;
             }
@@ -97,11 +111,14 @@ public class TakeOrder {
         return isValid;
     }
 
-    private boolean checkDessertMenu(String menuName, boolean isValid) {
+    private boolean checkDessertMenu(String menuName, int count, boolean isValid) {
 
         for (Dessert dessert : Dessert.values()) {
             if (menuName.equals(dessert.getName())) {
-                menuTypeList.add(dessert.getIdentifier());
+                for (int i = 0; i < count; i++) {
+                    menuTypeList.add(dessert.getIdentifier());
+                }
+                menuPriceList.add(dessert.getPrice());
                 isValid = true;
                 break;
             }
@@ -110,11 +127,14 @@ public class TakeOrder {
         return isValid;
     }
 
-    private boolean checkBeverageMenu(String menuName, boolean isValid) {
+    private boolean checkBeverageMenu(String menuName, int count, boolean isValid) {
 
         for (Beverage beverage : Beverage.values()) {
             if (menuName.equals(beverage.getName())) {
-                menuTypeList.add(beverage.getIdentifier());
+                for (int i = 0; i < count; i++) {
+                    menuTypeList.add(beverage.getIdentifier());
+                }
+                menuPriceList.add(beverage.getPrice());
                 isValid = true;
                 break;
             }
@@ -139,6 +159,17 @@ public class TakeOrder {
     }
 
     public List<Integer> getMenuTypeList() {
+
         return menuTypeList;
+    }
+
+    public List<Integer> getMenuPriceList() {
+
+        return menuPriceList;
+    }
+
+    public List<Integer> getMenuCountList() {
+
+        return menuCountList;
     }
 }
